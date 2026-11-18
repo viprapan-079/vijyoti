@@ -58,7 +58,7 @@ class _KundaliHomeState extends State<KundaliHome> {
     final p = await SharedPreferences.getInstance();
     final raw = p.getString('birth_records_v2');
     if (raw == null) return;
-    try { final decoded = (jsonDecode(raw) as List).cast<Map<String,dynamic>>();
+    try { final decoded = (jsonDecode(raw) as List).map((item) => Map<String,dynamic>.from(item as Map)).toList();
       if (mounted) setState(() => saved = decoded); } catch (_) { /* ignore invalid storage */ }
   }
   Future<void> _saveRecord() async {
@@ -166,7 +166,7 @@ class _KundaliHomeState extends State<KundaliHome> {
         SingleChildScrollView(scrollDirection:Axis.horizontal,child:Row(children:List.generate(todayMode?2:4,(i)=>
           Padding(padding:const EdgeInsets.only(right:5),child:ChoiceChip(label:Text(todayMode?
             ['Day details','Day Rashi'][i]:['1 Details','2 Dasha','3 Navamsha','4 Janma'][i]),
-            selected:page==i,onSelected:(_)=>setState(()=>page=i))))),
+            selected:page==i,onSelected:(_)=>setState(()=>page=i)))))),
         const SizedBox(height:14),
         if (todayMode) (page==0?_details():_chart(1,'Rashi Kundali for selected day'))
         else switch(page) {0=>_details(),1=>_dasha(),2=>_chart(9,'Navamsha Kundali (D9)'),_=>_chart(1,'Janma Kundali (D1)')},
