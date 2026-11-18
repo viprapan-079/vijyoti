@@ -140,7 +140,7 @@ Horoscope calculateHoroscope({
   }
   final rahu = result.last.longitude;
   result.add(Placement('Ketu', norm(rahu + 180)));
-  final asc = Sweph.swe_houses_ex(jd, SwephFlag.SEFLG_SIDEREAL, latitude, longitude, Hsys.SE_WHOLE_SIGN).ascmc[0];
+  final asc = Sweph.swe_houses_ex(jd, SwephFlag.SEFLG_SIDEREAL, latitude, longitude, Hsys.W).ascmc[0];
   result.insert(0, Placement('Lagna', norm(asc)));
   final moon = result.firstWhere((p) => p.label == 'Moon').longitude;
   final nakIndex = (moon / nakSpan).floor() % 27;
