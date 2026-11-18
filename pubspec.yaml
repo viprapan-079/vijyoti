@@ -1,0 +1,16 @@
+name: jyotishya_kundali
+version: 0.1.0+1
+description: Offline-oriented South Indian Vedic astrology calculator starter.
+publish_to: none
+environment:
+  sdk: '>=3.5.0 <4.0.0'
+dependencies:
+  flutter:
+    sdk: flutter
+  sweph: ^4.1.0+2.10.3
+  shared_preferences: ^2.5.3
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+flutter:
+  uses-material-design: true
