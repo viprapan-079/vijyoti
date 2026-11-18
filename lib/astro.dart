@@ -122,7 +122,7 @@ Horoscope calculateHoroscope({
     localBirth.hour, localBirth.minute, localBirth.second).subtract(Duration(minutes: (timezoneHours * 60).round()));
   final jd = Sweph.swe_julday(utc.year, utc.month, utc.day,
     utc.hour + utc.minute / 60 + utc.second / 3600, CalendarType.SE_GREG_CAL);
-  const flags = SwephFlag.SEFLG_SWIEPH | SwephFlag.SEFLG_SIDEREAL;
+  final flags = SwephFlag.SEFLG_SWIEPH | SwephFlag.SEFLG_SIDEREAL;
   final bodies = <String, HeavenlyBody>{
     'Sun': HeavenlyBody.SE_SUN,
     'Moon': HeavenlyBody.SE_MOON,
